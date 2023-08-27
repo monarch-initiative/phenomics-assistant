@@ -24,5 +24,5 @@ if prompt := st.chat_input():
 
     # openai.api_key = openai_api_key
     for message in agent.new_chat(prompt):
-        st.session_state.messages.append(message.model_dump())
+        st.session_state.messages.append(message.model_dump()) # save the message to the session state
         st.chat_message(message["role"]).write(message["content"])
