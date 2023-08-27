@@ -10,11 +10,13 @@ with st.sidebar:
 agent = MonarchAgent("Monarch Agent")
 
 st.title("Monarch Agent") 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+# if "messages" not in st.session_state:
+#     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+# for msg in st.session_state.messages:
+#     st.chat_message(msg["role"]).write(msg["content"])
+
+st.chat_message("assistant").write("How can I help you?")
 
 if prompt := st.chat_input():
     print("hey that tickles")
@@ -24,5 +26,5 @@ if prompt := st.chat_input():
 
     # openai.api_key = openai_api_key
     for message in agent.new_chat(prompt):
-        st.session_state.messages.append(message.model_dump()) # save the message to the session state
-        st.chat_message(message["role"]).write(message["content"])
+        #st.session_state.messages.append(message.model_dump()) # save the message to the session state
+        st.chat_message(message.role).write(message.content)
