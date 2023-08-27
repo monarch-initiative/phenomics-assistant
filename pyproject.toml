@@ -5,10 +5,9 @@ description = "LLM retrieval augmented generation agent for Monarch."
 authors = ["Shawn O'Neil <oneilsh@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "monarch_agent"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
 agent-smith-ai = "^0.10.2"
 streamlit = "^1.26.0"
 
