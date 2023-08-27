@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "monarch-agent"
+version = "0.1.0"
+description = "LLM retrieval augmented generation agent for Monarch."
+authors = ["Shawn O'Neil <oneilsh@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "monarch_agent"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+agent-smith-ai = "^0.10.2"
+streamlit = "^1.26.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
