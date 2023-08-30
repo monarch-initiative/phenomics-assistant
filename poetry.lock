@@ -2147,14 +2147,14 @@ files = [
 
 [[package]]
 name = "sphinx"
-version = "7.2.3"
+version = "7.2.4"
 description = "Python documentation generator"
 category = "main"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "sphinx-7.2.3-py3-none-any.whl", hash = "sha256:6379ea22c49955a44ed4e62bde8c94575e9544303cc0554eaa97099ae5853a3a"},
-    {file = "sphinx-7.2.3.tar.gz", hash = "sha256:ece68bb4d77b7dc090573825db45a6f9183e74098d1c21573485de250b1d1e3f"},
+    {file = "sphinx-7.2.4-py3-none-any.whl", hash = "sha256:9b3aa23254ffc5be468646810543e491653bf5a67f3f23e4ccd4e515b0bd0b9c"},
+    {file = "sphinx-7.2.4.tar.gz", hash = "sha256:1aeec862bf1edff4374012ac38082e0d1daa066c9e327841a846401164797988"},
 ]
 
 [package.dependencies]
@@ -2405,6 +2405,41 @@ watchdog = {version = ">=2.1.5", markers = "platform_system != \"Darwin\""}
 
 [package.extras]
 snowflake = ["snowflake-snowpark-python"]
+
+[[package]]
+name = "streamlit-cookies-manager"
+version = "0.2.0"
+description = "Access and save cookies from Streamlit"
+category = "main"
+optional = false
+python-versions = "^3.9"
+files = []
+develop = false
+
+[package.dependencies]
+cryptography = "*"
+streamlit = ">=0.84"
+
+[package.source]
+type = "git"
+url = "https://github.com/oneilsh/streamlit-cookies-manager.git"
+reference = "HEAD"
+resolved_reference = "dbb60c1e4c8bd1ae96b6609d144637eff69ed5d4"
+
+[[package]]
+name = "streamlit-ws-localstorage"
+version = "1.0.6"
+description = "A simple synchronous way of accessing localStorage from your Streamlit app."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "streamlit_ws_localstorage-1.0.6-py2-none-any.whl", hash = "sha256:9f7719b9278e0009a9e0cf564fdc7a2752bc76485abf52b7cdbf35da339ae2c7"},
+    {file = "streamlit_ws_localstorage-1.0.6.tar.gz", hash = "sha256:76606d13628522838386a73755c9a4da5475da72ea0ca6cf83e2ab482e152dad"},
+]
+
+[package.dependencies]
+streamlit = ">=0.86"
 
 [[package]]
 name = "tenacity"
@@ -2910,4 +2945,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "205cd508e813ca1fbefcec4f69b4d10d31966deca3efcc3b9bdfff7114dcc1ea"
+content-hash = "569697cf5d04b47cec596c9e566b8f616dfe580cb76a357751b585c0e3534502"
