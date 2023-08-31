@@ -36,16 +36,23 @@ def render_message(message):
     elif message.role == "system":
         with st.chat_message("assistant", avatar="ℹ️"):
             st.write(message.content)
-    elif message.role == "assistant":
-        if message.content:
-            with st.chat_message("assistant"):
-                st.write(message.content)
-        if message.is_function_call and st.session_state.show_function_calls:
+    elif message.role == "assistant" and not message.is_function_call:
+        with st.chat_message("assistant"):
+            st.write(message.content)
+
+    if st.session_state.show_function_calls:
+        if message.is_function_call:
             with st.chat_message("assistant", avatar="⚙️"):
                 st.write(f"Calling function: `{message.func_name}(params = {message.func_arguments})`")
-    elif message.role == "function" and st.session_state.show_function_calls:
-        with st.chat_message("assistant", avatar="⚙️"):
-            st.write(f"Result: `{message.content}`")
+
+        elif message.role == "function":
+            with st.chat_message("assistant", avatar="⚙️"):
+                st.write(f"Result: `{message.content}`")
+    
+    else:
+        if message.is_function_call:
+            with st.chat_message("assistant"):
+                st.write("Please hold, I need to check my sources...")
 
 # Handle chat input and responses
 def handle_chat_input():
@@ -59,9 +66,17 @@ def handle_chat_input():
         else:
             messages = agent['agent'].continue_chat(prompt, yield_prompt_message=True)
 
-        for message in messages:
-            agent['messages'].append(message)
-            render_message(message)
+        # for message in messages:
+        #     agent['messages'].append(message)
+        #     render_message(message)
+        while True:
+            try:
+                with st.spinner("Thinking..."):
+                    message = next(messages)
+                    agent['messages'].append(message)
+                    render_message(message)
+            except StopIteration:
+                break
 
         st.session_state.lock_widgets = False  # Step 5: Unlock the UI
         st.experimental_rerun()
