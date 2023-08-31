@@ -52,7 +52,7 @@ def render_message(message):
     else:
         if message.is_function_call:
             with st.chat_message("assistant"):
-                st.write("Please hold, I need to check my sources...")
+                st.write("Please hold, checking my sources...")
 
 # Handle chat input and responses
 def handle_chat_input():
@@ -66,9 +66,6 @@ def handle_chat_input():
         else:
             messages = agent['agent'].continue_chat(prompt, yield_prompt_message=True)
 
-        # for message in messages:
-        #     agent['messages'].append(message)
-        #     render_message(message)
         while True:
             try:
                 with st.spinner("Thinking..."):
