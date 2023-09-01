@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-agent-smith-ai = "^0.12.0"
+agent-smith-ai = "^0.13.0"
 streamlit = "^1.26.0"
 python-dotenv = "^1.0.0"
 streamlit-cookies-manager = {git = "https://github.com/oneilsh/streamlit-cookies-manager.git"}
