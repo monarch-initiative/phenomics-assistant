@@ -28,7 +28,7 @@ class MonarchAgent(UtilityAgent):
                          openai_api_key = openai_api_key,    # API key; will default to OPENAI_API_KEY env variable
                          auto_summarize_buffer_tokens = 500,               # Summarize and clear the history when fewer than this many tokens remains in the context window. Checked prior to each message sent to the model.
                          summarize_quietly = False,                        # If True, do not alert the user when a summarization occurs
-                         max_tokens = 50000.0,                                # maximum number of tokens this agent can bank (default: None, no limit)
+                         max_tokens = None,                                # maximum number of tokens this agent can bank (default: None, no limit)
                          token_refill_rate = 50000.0 / 3600.0)             # number of tokens to add to the bank per second
 
         ## register some API endpoints (inherited from UtilityAgent)
