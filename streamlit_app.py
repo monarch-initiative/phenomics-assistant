@@ -8,9 +8,11 @@ import logging
 
 # Initialize session states
 def initialize_session_state():
-    st.session_state.setdefault("logger", logging.getLogger(__name__))
-    st.session_state.logger.setLevel(logging.INFO)
-    st.session_state.logger.addHandler(logging.StreamHandler())
+    if "logger" not in st.session_state:
+        st.session_state.logger = logging.getLogger(__name__)
+        st.session_state.logger.handlers = []
+        st.session_state.logger.setLevel(logging.INFO)
+        st.session_state.logger.addHandler(logging.StreamHandler())
 
     st.session_state.setdefault("user_api_key", "")
     st.session_state.setdefault("original_api_key", os.environ.get("OPENAI_API_KEY", None))  # Store the original API key
