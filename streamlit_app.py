@@ -131,6 +131,10 @@ def handle_chat_input():
                     message = next(messages)
                     agent['messages'].append(message)
                     st.session_state.current_action = render_message(message)
+       
+                    session_id = st.runtime.scriptrunner.add_script_run_ctx().streamlit_script_run_ctx.session_id
+                    info = {"session_id": session_id, "message": message.model_dump(), "agent": st.session_state.current_agent_name}
+                    st.session_state.logger.info(info)
             except StopIteration:
                 break
 
@@ -190,10 +194,6 @@ def main():
 
     for message in st.session_state.agents[st.session_state.current_agent_name]['messages']:
         render_message(message)
-        
-        session_id = st.runtime.scriptrunner.add_script_run_ctx().streamlit_script_run_ctx.session_id
-        info = {"session_id": session_id, "message": message.model_dump(), "agent": st.session_state.current_agent_name}
-        st.session_state.logger.info(info)
 
     # Check for valid API key and adjust chat input box accordingly
     if has_valid_api_key():
