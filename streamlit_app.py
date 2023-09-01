@@ -2,11 +2,16 @@ import streamlit as st
 import os
 from monarch_agent import MonarchAgent
 import dotenv
-import textwrap
+import logging
+
 
 
 # Initialize session states
 def initialize_session_state():
+    st.session_state.setdefault("logger", logging.getLogger(__name__))
+    st.session_state.logger.setLevel(logging.INFO)
+    st.session_state.logger.addHandler(logging.StreamHandler())
+
     st.session_state.setdefault("user_api_key", "")
     st.session_state.setdefault("original_api_key", os.environ.get("OPENAI_API_KEY", None))  # Store the original API key
     st.session_state.setdefault("show_function_calls", False)
@@ -74,6 +79,10 @@ def has_valid_api_key():
 
 # Render chat message
 def render_message(message):
+    session_id = st.runtime.scriptrunner.add_script_run_ctx().streamlit_script_run_ctx.session_id
+    info = {"session_id": session_id, "message": message.model_dump(), "agent": st.session_state.current_agent_name}
+    st.session_state.logger.info(info)
+
     current_agent_avatar = st.session_state.agents[st.session_state.current_agent_name].get("avatar", None)
     current_user_avatar = st.session_state.agents[st.session_state.current_agent_name].get("user_avatar", None)
 
