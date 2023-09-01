@@ -79,10 +79,6 @@ def has_valid_api_key():
 
 # Render chat message
 def render_message(message):
-    session_id = st.runtime.scriptrunner.add_script_run_ctx().streamlit_script_run_ctx.session_id
-    info = {"session_id": session_id, "message": message.model_dump(), "agent": st.session_state.current_agent_name}
-    st.session_state.logger.info(info)
-
     current_agent_avatar = st.session_state.agents[st.session_state.current_agent_name].get("avatar", None)
     current_user_avatar = st.session_state.agents[st.session_state.current_agent_name].get("user_avatar", None)
 
@@ -194,6 +190,10 @@ def main():
 
     for message in st.session_state.agents[st.session_state.current_agent_name]['messages']:
         render_message(message)
+        
+        session_id = st.runtime.scriptrunner.add_script_run_ctx().streamlit_script_run_ctx.session_id
+        info = {"session_id": session_id, "message": message.model_dump(), "agent": st.session_state.current_agent_name}
+        st.session_state.logger.info(info)
 
     # Check for valid API key and adjust chat input box accordingly
     if has_valid_api_key():
