@@ -34,7 +34,6 @@ def initialize_session_state():
                 "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
                 "user_avatar": "👤",
             },
-            {
             "Monarch Assistant": {
                 "agent": MonarchAgent("Monarch Assistant", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
