@@ -27,7 +27,7 @@ def initialize_session_state():
 
 
     if "agents" not in st.session_state:
-        st.session_state.agents = ,
+        st.session_state.agents = {
             "Monarch Assistant (GPT-4)": {
                 "agent": MonarchAgent("Monarch Assistant (GPT-4)", model="gpt-4-0613", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
