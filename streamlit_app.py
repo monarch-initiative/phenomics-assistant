@@ -27,15 +27,16 @@ def initialize_session_state():
 
 
     if "agents" not in st.session_state:
-        st.session_state.agents = {
-            "Monarch Assistant": {
-                "agent": MonarchAgent("Monarch Assistant", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
+        st.session_state.agents = ,
+            "Monarch Assistant (GPT-4)": {
+                "agent": MonarchAgent("Monarch Assistant (GPT-4)", model="gpt-4-0613", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
                 "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
                 "user_avatar": "👤",
             },
-            "Monarch Assistant (GPT-4)": {
-                "agent": MonarchAgent("Monarch Assistant (GPT-4)", model="gpt-4-0613", openai_api_key=get_current_api_key_for_agent_use()),
+            {
+            "Monarch Assistant": {
+                "agent": MonarchAgent("Monarch Assistant", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
                 "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
                 "user_avatar": "👤",
@@ -55,7 +56,7 @@ def initialize_page():
         page_title="Monarch Assistant",
         page_icon="https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
         layout="centered",
-        initial_sidebar_state="collapsed",
+        initial_sidebar_state="expanded",
         menu_items={
             "Get Help": "https://next.monarchinitiative.org",
             "About": "This application is brought to you by the [Monarch Initiative](https://next.monarchinitiative.org).",
