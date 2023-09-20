@@ -23,7 +23,9 @@ def initialize_session_state():
     greeting = """I'm the Monarch Assistant, an AI chatbot with access to the [Monarch Inititive](https://next.monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
     
 - What is the genetic basis of Cystic Fibrosis?
-- What symptoms are associated with Fanconi Anemia?"""
+- What symptoms are associated with Fanconi Anemia?
+
+Please note that I am a research preview, and this information should not be used for diagnoses, clinical decision making, or other medical applications."""
 
 
     if "agents" not in st.session_state:
