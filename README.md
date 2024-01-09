@@ -1,6 +1,6 @@
 # Monarch Assistant
 
-Monarch assistant is a user-friendly interface to the Monarch knowledge graph, a comprehensive biomedical database, using large language models for natural-language based queries.
+The [Monarch Initiative](https://monarchinitiative.org/) has an extensive, cross-species, semantic knowledge graph. Monarch Assistant is a user-friendly interface that uses large language models (LLMs) to enable natural-language interaction with the Monarch KG.
 
 A demonstration deployment is available at https://monarch-assistant.streamlit.app/
 
