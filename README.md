@@ -2,7 +2,7 @@
 
 The [Monarch Initiative](https://monarchinitiative.org/) has an extensive, cross-species, semantic knowledge graph. Monarch Assistant is a user-friendly interface that uses large language models (LLMs) to enable natural-language interaction with the Monarch KG.
 
-A demonstration deployment is available at https://monarch-assistant.streamlit.app/
+A demo version of the Monarch Assistant is available at https://monarch-assistant.streamlit.app/
 
 ## Related repositories
 
