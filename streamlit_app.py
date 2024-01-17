@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from monarch_agent import MonarchAgent
+from agents import PhenomicsAgent
 import dotenv
 import logging
 
@@ -20,7 +20,7 @@ def initialize_session_state():
     st.session_state.setdefault("ui_disabled", False)
     st.session_state.setdefault("lock_widgets", False)
 
-    greeting = """I'm the Monarch Assistant, an AI chatbot with access to the [Monarch Inititive](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
+    greeting = """I'm the Phenomics Assistant, an AI chatbot with access to the [Monarch Inititive](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
     
 - What is the genetic basis of Cystic Fibrosis?
 - What symptoms are associated with Fanconi Anemia?
@@ -30,16 +30,16 @@ Please note that I am a research preview, and this information should not be use
 
     if "agents" not in st.session_state:
         st.session_state.agents = {
-            "Monarch Assistant": {
-                "agent": MonarchAgent("Monarch Assistant", model="gpt-4-1106-preview", openai_api_key=get_current_api_key_for_agent_use()),
+            "Phenomics Assistant": {
+                "agent": PhenomicsAgent("Phenomics Assistant", model="gpt-4-1106-preview", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
-                "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
+                "avatar": "ℹ️",
                 "user_avatar": "👤",
             },
-            "Monarch Assistant (GPT 3.5)": {
-                "agent": MonarchAgent("Monarch Assistant", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
+            "Phenomics Assistant (GPT 3.5)": {
+                "agent": PhenomicsAgent("Phenomics Assistant", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
-                "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
+                "avatar": "ℹ️",
                 "user_avatar": "👤",
             }
         }
@@ -54,13 +54,13 @@ Please note that I am a research preview, and this information should not be use
 
 def initialize_page():
     st.set_page_config(
-        page_title="Monarch Assistant",
-        page_icon="https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
+        page_title="Phenomics Assistant",
+        page_icon="ℹ️",
         layout="centered",
         initial_sidebar_state="expanded",
         menu_items={
-            "Get Help": "https://monarchinitiative.org",
-            "About": "This application is brought to you by the [Monarch Initiative](https://next.monarchinitiative.org).",
+            "Get Help": "https://github.com/monarch-initiative/phenomics-assistant/issues",
+            "About": "This application is brought to you in part by the [Monarch Initiative](https://next.monarchinitiative.org).",
         }
     )
 
