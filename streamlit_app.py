@@ -31,7 +31,7 @@ Please note that I am a research preview, and this information should not be use
     if "agents" not in st.session_state:
         st.session_state.agents = {
             "Phenomics Assistant": {
-                "agent": PhenomicsAgent("Phenomics Assistant", model="gpt-4-1106-preview", openai_api_key=get_current_api_key_for_agent_use()),
+                "agent": PhenomicsAgent("Phenomics Assistant", model="gpt-4-turbo-2024-04-09", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
                 "avatar": "ℹ️",
                 "user_avatar": "👤",
