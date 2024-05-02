@@ -31,7 +31,7 @@ Please note that I am a research preview, and this information should not be use
     if "agents" not in st.session_state:
         st.session_state.agents = {
             "Monarch Assistant": {
-                "agent": MonarchAgent("Monarch Assistant", model="gpt-4-1106-preview", openai_api_key=get_current_api_key_for_agent_use()),
+                "agent": MonarchAgent("Monarch Assistant", model="gpt-4-turbo-2024-04-09", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
                 "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
                 "user_avatar": "👤",
