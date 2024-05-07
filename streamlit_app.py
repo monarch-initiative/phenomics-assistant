@@ -123,10 +123,10 @@ def handle_chat_input():
 
         # Continue with conversation
         if not agent.get('conversation_started', False):
-            messages = agent['agent'].new_chat(prompt, yield_prompt_message=True)
+            messages = agent['agent'].chat(prompt, yield_prompt_message=True)
             agent['conversation_started'] = True
         else:
-            messages = agent['agent'].continue_chat(prompt, yield_prompt_message=True)
+            messages = agent['agent'].chat(prompt, yield_prompt_message=True)
 
         st.session_state.current_action = "*Thinking...*"
         while True:
