@@ -2,7 +2,7 @@
 
 The [Monarch Initiative](https://monarchinitiative.org/) has an extensive, cross-species, semantic knowledge graph. Phenomics Assistant is a user-friendly interface that uses large language models (LLMs) to enable natural-language interaction with the Monarch KG.
 
-A demo version of the Phenomics Assistant is available at https://phenomics-assistant.streamlit.app/
+A demo version is available at https://phenomics-assistant.streamlit.app/
 
 ## Related repositories
 
