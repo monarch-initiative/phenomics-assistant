@@ -143,7 +143,7 @@ def handle_chat_input():
                 break
 
         st.session_state.lock_widgets = False  # Step 5: Unlock the UI
-        st.experimental_rerun()
+        st.rerun()
 
 def clear_chat_current_agent():
     current_agent = st.session_state.agents[st.session_state.current_agent_name]
