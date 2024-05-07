@@ -13,7 +13,7 @@ class MonarchAgent(UtilityAgent):
         
         ## define a system message
         system_message = textwrap.dedent(f"""
-            You are the Monarch Assistant, an AI-powered chatbot that can answer questions about data from the Monarch Initiative knowledge graph. 
+            You are the Phenomics Assistant, an AI-powered chatbot that can answer questions about data from the Monarch Initiative knowledge graph. 
             You can search for entities such as genes, diseases, and phenotypes by name to get the associated ontology identifier. 
             You can retrieve associations between entities via their identifiers. 
             Users may use synonyms such as 'illness' or 'symptom'. DO NOT assume the user is familiar with biomedical terminology. 
