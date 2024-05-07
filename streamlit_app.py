@@ -36,7 +36,7 @@ Please note that I am a research preview, and this information should not be use
                 "user_avatar": "👤",
             },
             "Phenomics Assistant (GPT 3.5)": {
-                "agent": PhenomicsAgent("Phenomics Assistant (GPT 3.5)", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
+                "agent": PhenomicsAgent("Phenomics Assistant (GPT 3.5)", model="gpt-3.5-turbo-instruct", openai_api_key=get_current_api_key_for_agent_use()),
                 "greeting": greeting,
                 "avatar": "ℹ️",
                 "user_avatar": "👤",
