@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from monarch_agent import MonarchAgent
+from agents import PhenomicsAgent
 import dotenv
 import logging
 
@@ -27,19 +27,18 @@ def initialize_session_state():
 
 Please note that I am a research preview, and this information should not be used for diagnoses, clinical decision making, or other medical applications."""
 
-
     if "agents" not in st.session_state:
         st.session_state.agents = {
             "Phenomics Assistant": {
-                "agent": MonarchAgent("Phenomics Assistant", model="gpt-4-turbo-2024-04-09", openai_api_key=get_current_api_key_for_agent_use()),
+                "agent": PhenomicsAgent("Phenomics Assistant", model="gpt-4-turbo-2024-04-09", openai_api_key=get_current_api_key_for_agent_use(), auto_summarize_buffer_tokens=10000),
                 "greeting": greeting,
-                "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
+                "avatar": "ℹ️",
                 "user_avatar": "👤",
             },
             "Phenomics Assistant (GPT 3.5)": {
-                "agent": MonarchAgent("Phenomics Assistant", model="gpt-3.5-turbo-16k-0613", openai_api_key=get_current_api_key_for_agent_use()),
+                "agent": PhenomicsAgent("Phenomics Assistant (GPT 3.5)", model="gpt-3.5-turbo-0613", openai_api_key=get_current_api_key_for_agent_use(), auto_summarize_buffer_tokens=1000),
                 "greeting": greeting,
-                "avatar": "https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
+                "avatar": "ℹ️",
                 "user_avatar": "👤",
             }
         }
@@ -55,12 +54,12 @@ Please note that I am a research preview, and this information should not be use
 def initialize_page():
     st.set_page_config(
         page_title="Phenomics Assistant",
-        page_icon="https://avatars.githubusercontent.com/u/5161984?s=200&v=4",
+        page_icon="ℹ️",
         layout="centered",
         initial_sidebar_state="expanded",
         menu_items={
-            "Get Help": "https://monarchinitiative.org",
-            "About": "This application is brought to you by the [Monarch Initiative](https://next.monarchinitiative.org).",
+            "Get Help": "https://github.com/monarch-initiative/phenomics-assistant/issues",
+            "About": "This application is brought to you in part by the [Monarch Initiative](https://next.monarchinitiative.org).",
         }
     )
 

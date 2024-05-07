@@ -7,9 +7,9 @@ from typing import Any, Dict
 
 
 ## A UtilityAgent can call API endpoints and local methods
-class MonarchAgent(UtilityAgent):
+class PhenomicsAgent(UtilityAgent):
 
-    def __init__(self, name, model = "gpt-3.5-turbo-16k-0613", openai_api_key = None):
+    def __init__(self, name, model = "gpt-3.5-turbo-16k-0613", openai_api_key = None, auto_summarize_buffer_tokens = 500):
         
         ## define a system message
         system_message = textwrap.dedent(f"""
@@ -25,7 +25,7 @@ class MonarchAgent(UtilityAgent):
                          system_message,                                   # Openai system message
                          model = model,                     # Openai model name
                          openai_api_key = openai_api_key,    # API key; will default to OPENAI_API_KEY env variable
-                         auto_summarize_buffer_tokens = 500,               # Summarize and clear the history when fewer than this many tokens remains in the context window. Checked prior to each message sent to the model.
+                         auto_summarize_buffer_tokens = auto_summarize_buffer_tokens,               # Summarize and clear the history when fewer than this many tokens remains in the context window. Checked prior to each message sent to the model.
                          summarize_quietly = False,                        # If True, do not alert the user when a summarization occurs
                          max_tokens = None,                                # maximum number of tokens this agent can bank (default: None, no limit)
                          token_refill_rate = 50000.0 / 3600.0)             # number of tokens to add to the bank per second
