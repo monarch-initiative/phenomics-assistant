@@ -122,10 +122,10 @@ def handle_chat_input():
 
         # Continue with conversation
         if not agent.get('conversation_started', False):
-            messages = agent['agent'].new_chat(prompt, yield_prompt_message=True)
+            messages = agent['agent'].chat(prompt, yield_prompt_message=True)
             agent['conversation_started'] = True
         else:
-            messages = agent['agent'].continue_chat(prompt, yield_prompt_message=True)
+            messages = agent['agent'].chat(prompt, yield_prompt_message=True)
 
         st.session_state.current_action = "*Thinking...*"
         while True:
@@ -142,7 +142,7 @@ def handle_chat_input():
                 break
 
         st.session_state.lock_widgets = False  # Step 5: Unlock the UI
-        st.experimental_rerun()
+        st.rerun()
 
 def clear_chat_current_agent():
     current_agent = st.session_state.agents[st.session_state.current_agent_name]
