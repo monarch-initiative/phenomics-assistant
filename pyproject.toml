@@ -7,12 +7,10 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.9.7 || >3.9.7,<3.10"
-agent-smith-ai = {git = "https://github.com/monarch-initiative/agent-smith-ai.git"}
+python=">=3.10,<4.0"
 streamlit = "^1.26.0"
 python-dotenv = "^1.0.0"
-streamlit-cookies-manager = {git = "https://github.com/oneilsh/streamlit-cookies-manager.git"}
-streamlit-ws-localstorage = "^1.0.6"
+kani-utils = {git = "https://github.com/oneilsh/kani-utils.git"}
 
 [build-system]
 requires = ["poetry-core"]
