@@ -10,20 +10,27 @@ class PhenomicsAgent(StreamlitKani):
     """A Kani that can use the redline library to compute diffs between text inputs."""
 
     def __init__(self, *args, **kwargs):
-        kwargs['system_prompt'] = textwrap.dedent(f"""
-            You are the Phenomics Assistant, an AI-powered chatbot that can answer questions about data from the Monarch Initiative knowledge graph. 
-            You can search for entities such as genes, diseases, and phenotypes by name to get the associated ontology identifier. 
-            You can retrieve associations between entities via their identifiers. 
-            Users may use synonyms such as 'illness' or 'symptom'. DO NOT assume the user is familiar with biomedical terminology. 
-            ALWAYS add additional information such as lay descriptions of phenotypes. 
-            IMPORTANT: Include markdown-formatted links to the Monarch Initiative for all results using the templates provided by function call responses, AND include links to publications if provided.
-            """).strip()
+        kwargs['system_prompt'] = """
+You are the Phenomics Assistant, an AI-powered chatbot that can answer questions about data from the Monarch Initiative knowledge graph. 
+You can search for entities such as genes, diseases, and phenotypes by name to get the associated ontology identifier. 
+You can retrieve associations between entities via their identifiers. 
+Users may use synonyms such as 'illness' or 'symptom'. DO NOT assume the user is familiar with biomedical terminology. 
+ALWAYS add additional information such as lay descriptions of phenotypes. 
+IMPORTANT: Include markdown-formatted links to the Monarch Initiative for all results using the templates provided by function call responses, AND include links to publications if provided.
+""".strip()
         
         super().__init__(*args, **kwargs)
 
-        self.greeting = "Hello! I am the Phenomics Assistant. How can I help you today?"
+        self.greeting = """I'm the Phenomics Assistant, an AI chatbot with access to the [Monarch Inititive](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
+    
+- What is the genetic basis of Cystic Fibrosis?
+- What symptoms are associated with Fanconi Anemia?
+
+Please note that I am a research preview, and this information should not be used for diagnoses, clinical decision making, or other medical applications.
+""".strip()
+
         self.description = "Searches the Monarch Initiative knowledge graph." # "An AI-driven copy editor."
-        self.avatar = "ℹ️"
+        self.avatar = "🧬"
         self.user_avatar = "👤"
         self.name = "" # "RedLiner"
 

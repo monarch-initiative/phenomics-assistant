@@ -30,9 +30,9 @@ dotenv.load_dotenv()
 # see more at https://docs.streamlit.io/library/api-reference/utilities/st.set_page_config
 # this function MUST be run first
 ks.initialize_app_config(
-    show_function_calls = True,
+    show_function_calls = False,
     page_title = "Phenomics Assistant",
-    page_icon = "ℹ️", # can also be a URL
+    page_icon = "🧬", # can also be a URL
     initial_sidebar_state = "expanded", # or "expanded"
     menu_items = {
             "Get Help": "https://github.com/monarch-initiative/phenomics-assistant",
