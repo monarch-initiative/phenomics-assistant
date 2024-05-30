@@ -213,7 +213,7 @@ Instructions:
 - What is the shortest path between Abnormal dermatoglyphics and the GSTM3 gene?
 - Which gene is directly or indirectly associated with the largest number of diseases? (I struggle with this one!)
 
-**Please note that as an experimental work in progress I frequently make mistakes.**
+**Please note that as an experimental work in progress I frequently make mistakes.** More information is available in my [implementation notes](https://github.com/monarch-initiative/phenomics-assistant/blob/neo_agent/pe_notes.md).
 """
         self.description = "Queries the Monarch KG with graph queries and contextual information."
         self.avatar = "🕷️"
