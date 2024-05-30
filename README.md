@@ -6,4 +6,4 @@ A demo version is available at https://phenomics-assistant.streamlit.app/
 
 ## Related repositories
 
-This repository contains the Streamlit-based UI framework for Phenomics Assistant, interfacing with [LLM-focused endpoints](https://github.com/monarch-initiative/oai-monarch-plugin) to the main [Monarch API](https://api-v3.monarchinitiative.org/v3/docs) via an [agent-based framework](https://github.com/monarch-initiative/agent-smith-ai). 
+This version of the assistant utilizes [LLM-focused endpoints](https://github.com/monarch-initiative/oai-monarch-plugin) to the main [Monarch API](https://api-v3.monarchinitiative.org/v3/docs), via a Streamlit-based [middleware](https://github.com/oneilsh/kani-utils) to the [Kani](https://github.com/zhudotexe/kani/) LLM framework.
