@@ -4,6 +4,7 @@ from typing import Annotated, List
 import textwrap
 import logging
 import requests
+import streamlit as st
 
 from neo4j import GraphDatabase
 
@@ -152,6 +153,11 @@ class Neo4jAgent(StreamlitKani):
     def query_kg(self, query: Annotated[str, AIParam(desc="Cypher query to run.")],):
         """Run a cypher query against the database."""
 
+        def render_query():
+             st.markdown(f"Query Used: ```{query}```")
+
+        self.render_in_streamlit_chat(render_query)
+
         with self.neo4j_driver.session() as session:
             result = session.run(query)
             data = [record.data() for record in result]
@@ -213,7 +219,7 @@ Instructions:
 - What is the shortest path between Abnormal dermatoglyphics and the GSTM3 gene?
 - Which gene is directly or indirectly associated with the largest number of diseases? (I struggle with this one!)
 
-**Please note that as an experimental work in progress I frequently make mistakes.** More information is available in my [implementation notes](https://github.com/monarch-initiative/phenomics-assistant/blob/neo_agent/pe_notes.md).
+**Please note that as an experimental work in progress I frequently make mistakes.** More information is available in my [implementation notes](https://github.com/monarch-initiative/phenomics-assistant/blob/new_backend/pe_notes.md).
 """
         self.description = "Queries the Monarch KG with graph queries and contextual information."
         self.avatar = "🕷️"
