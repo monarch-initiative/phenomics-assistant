@@ -1,0 +1,80 @@
+[
+    {
+        "question": "What genes are associated with predisposition to invasive fungal disease due to CARD9 deficiency?",
+        "search_terms": ["predisposition to invasive fungal disease due to CARD9 deficiency"],
+        "query": "MATCH (g:`biolink:Gene`)-[r:`biolink:causes`]->(d:`biolink:Disease` {id: 'MONDO:0008905'}) RETURN g.id, g.name LIMIT 5",
+        "expected_answer": "The gene CARD9 (HGNC:16391) is associated with the disease 'predisposition to invasive fungal disease due to CARD9 deficiency' (MONDO:0008905) with relationships 'biolink:gene_associated_with_condition' and 'biolink:causes'."
+    },
+    {
+        "question": "List all of the diseases known to be related to TAF4.",
+        "search_terms": ["TAF4"],
+        "query": "MATCH (g:`biolink:Gene` {id: 'HGNC:11537'})-[r]-(d:`biolink:Disease`) RETURN d.id, d.name, type(r)",
+        "expected_answer": "The gene TAF4 (HGNC:11537) is associated with the disease 'neurodevelopmental disorder with dysmorphic facies and distal limb anomalies' (MONDO:0060596) through the relationship 'biolink:gene_associated_with_condition'."
+    },
+    {
+        "question": "What is the relationship between abamectin and avermectin B1a?",
+        "search_terms": ["abamectin", "avermectin B1a"],
+        "query": "MATCH (c1:`biolink:ChemicalEntity` {id: 'CHEBI:39214'})-[r]-(c2:`biolink:ChemicalEntity` {id: 'CHEBI:29534'}) RETURN c1.id, c1.name, c2.id, c2.name, type(r)",
+        "expected_answer": "Abamectin (CHEBI:39214) is 'biolink:related_to' avermectin B1a (CHEBI:29534), suggesting a connection or similarity between these chemical entities."
+    },
+    {
+        "question": "What features result from the gene LZTR1 causing Noonan syndrome 10, and how do these features compare to the commonly associated spectrum of phenotypes with Noonan Syndrome?",
+        "search_terms": ["LZTR1", "Noonan syndrome 10", "Noonan Syndrome"],
+        "query": "MATCH (g:`biolink:Gene` {id: 'HGNC:6742'})-[:`biolink:causes`]->(specific_ns:`biolink:Disease` {id: 'MONDO:0014693'})-[:`biolink:subclass_of`]->(general_ns:`biolink:Disease` {name: 'Noonan syndrome'}), (specific_ns)-[:`biolink:has_phenotype`]->(p:`biolink:PhenotypicFeature`) WITH collect(p.name) AS specific_ns_phenotypes, general_ns MATCH (general_ns)-[:`biolink:has_phenotype`]->(pg:`biolink:PhenotypicFeature`) RETURN specific_ns_phenotypes, collect(pg.name) AS general_ns_phenotypes",
+        "expected_answer": "The gene LZTR1 (HGNC:6742) causing Noonan syndrome 10 (MONDO:0014693) exhibits phenotypes such as Patent ductus arteriosus and Hypertrophic cardiomyopathy, which are also present in the broader Noonan syndrome phenotype spectrum. Other features like Narrow forehead and Hyperpigmentation of the skin are more specific to Noonan syndrome 10. The broader Noonan syndrome category includes additional features like Radioulnar synostosis, Abnormality of coagulation, and Cystic hygroma."
+    },
+    {
+        "question": "What genes are associated with human neutrophil degranulation, and what diseases or symptoms are connected through these genes?",
+        "search_terms": ["human neutrophil degranulation"],
+        "query": "MATCH (p:`biolink:Pathway` {id: 'REACT:R-HSA-6798695'})-[r:`biolink:participates_in`]-(g:`biolink:Gene`), (g)-[r2]-(d:`biolink:DiseaseOrPhenotypicFeature`) RETURN g.id AS GeneID, g.name AS GeneName, d.id AS DiseaseOrFeatureID, d.name AS DiseaseOrFeatureName, type(r2) AS RelationshipType LIMIT 10",
+        "expected_answer": "The gene ALAD (HGNC:395) is associated with human neutrophil degranulation and is connected to diseases and phenotypic features such as 'porphyria due to ALA dehydratase deficiency' (MONDO:0013000) through 'biolink:causes' and 'biolink:gene_associated_with_condition', as well as phenotypic features including Muscle weakness (HP:0001324), Autosomal recessive inheritance (HP:0000007), Congenital onset (HP:0003577), Abnormal fear/anxiety-related behavior (HP:0100852), Polyneuropathy (HP:0001271), Confusion (HP:0001289), Motor polyneuropathy (HP:0007178), and Elevated urinary delta-aminolevulinic acid (HP:0003163) through 'biolink:has_phenotype' relationships."
+    },
+    {
+        "question": "What diseases are associated with CARD9 and what symptomps or features are linked to these diseases?",
+        "search_terms": ["CARD9"],
+        "query": "MATCH (g:`biolink:Gene` {id: \"HGNC:16391\"}) -[:`biolink:gene_associated_with_condition`]->(d:`biolink:Disease`), (d)-[:`biolink:has_phenotype`]->(p:`biolink:PhenotypicFeature`) RETURN d.id AS DiseaseID, d.name AS DiseaseName, COLLECT(p.id) AS PhenotypeIDs, COLLECT(p.name) AS PhenotypeNames LIMIT 10",
+        "expected_answer": "The disease 'predisposition to invasive fungal disease due to CARD9 deficiency' (MONDO:0008905) is associated with the gene CARD9 (HGNC:16391). Phenotypic features linked to this disease include 'Decreased serum iron', 'Deep dermatophytosis', 'Increased circulating IgE level', 'Abnormality of blood and blood-forming tissues', 'Meningitis', 'Abnormal B cell count', 'Abnormal proportion of CD4-positive T cells', 'Onychomycosis', 'Chronic oral candidiasis', 'Lymphadenopathy', 'Hypereosinophilia', 'Chronic tinea infection', 'Abnormal proportion of CD8-positive T cells', 'Abnormal natural killer cell count', and 'Immunodeficiency'."
+    },
+    {
+        "question": "What are all the subtypes or descendants of Ehlers-Danlos Syndrome?",
+        "search_terms": ["Ehlers-Danlos Syndrome"],
+        "query": "MATCH (d:`biolink:Disease` {id: 'MONDO:0020066'})<-[:`biolink:subclass_of`*]-(subD:`biolink:Disease`) RETURN subD.id AS SubtypeID, subD.name AS SubtypeName",
+        "expected_answer": "Subtypes and descendants of Ehlers-Danlos Syndrome (MONDO:0020066) include 'Ehlers-Danlos syndrome, Beasley-Cohen type' (MONDO:0012114), 'Ehlers-Danlos syndrome, vascular-like type' (MONDO:0016469), 'Ehlers-Danlos syndrome, autosomal dominant, type unspecified' (MONDO:0007528), 'joint laxity, familial' (MONDO:0007842), 'Hern\\u00e1ndez-Aguirre Negrete syndrome' (MONDO:0016290), and various others covering different forms of the syndrome."
+    },
+    {
+        "question": "What are the most common phenotypes that are shared by more than one subtype of Ehlers-Danlos Syndrome?",
+        "search_terms": ["Ehlers-Danlos Syndrome"],
+        "query": "MATCH (eds:`biolink:Disease` {id: 'MONDO:0020066'})<-[:`biolink:subclass-_of`*](subtype:`biolink:Disease`)-[:`biolink:has_phenotype`]->(p:`biolink:PhenotypicFeature`) WITH p, COUNT(DISTINCT subtype) as SubtypeCount WHERE SubtypeCount > 1 RETURN p.id as PhenotypeID, p.name as PhenotypeName, SubtypeCount ORDER BY SubtypeCount DESC LIMIT 5",
+        "expected_answer": "The top phenotypes shared by more than one subtype of Ehlers-Danlos Syndrome, ordered from most to least common, are 'Hyperextensible skin' (HP:0000974) shared by 30 subtypes, 'Bruising susceptibility' (HP:0000978) shared by 26 subtypes, 'Inguinal hernia' (HP:0000023) shared by 21 subtypes, 'Atrophic scars' (HP:0001075) and 'Blue sclerae' (HP:0000592) both shared by 20 subtypes each."
+    },
+    {
+        "question": "What disease categories does Ehlers-Danlos Syndrome fall into?",
+        "search_terms": ["Ehlers-Danlos Syndrome"],
+        "query": "MATCH path= (d:`biolink:Disease` {id: 'MONDO:0020066'})-[:`biolink:subclass_of`*]->(parent:`biolink:Disease`) WITH parent, length(path) AS depth ORDER BY depth DESC WITH collect(DISTINCT parent) AS parents UNWIND parents AS category RETURN category.id AS CategoryID, category.name AS CategoryName",
+        "expected_answer": "Ehlers-Danlos Syndrome falls into the following disease categories, from most to least specific: developmental defect during embryogenesis (MONDO:0019755), hereditary disease (MONDO:0003847), syndromic disease (MONDO:0002254), disorder of development or morphogenesis (MONDO:0021147), human disease (MONDO:0700096), and disease (MONDO:0000001)."
+    },
+    {
+        "question": "What phenotypes are shared by EDS or its descendants, and Cystic Fibrosis or its descendants?",
+        "search_terms": ["Ehlers-Danlos Syndrome", "Cystic Fibrosis"],
+        "query": "MATCH (eds:`biolink:Disease` {id: 'MONDO:0020066'})<-[:`biolink:subclass_of`*0..]-(descEDS:`biolink:Disease`)-[:`biolink:has_phenotype`]->(phen:`biolink:PhenotypicFeature`), (cf:`biolink:Disease` {id: 'MONDO:0009061'})<-[:`biolink:subclass_of`*0..]-(descCF:`biolink:Disease`) WHERE (descCF)-[:`biolink:has_phenotype`]->(phen) WITH phen, COUNT(DISTINCT descEDS) AS EdsCount, COUNT(DISTINCT descCF) AS CfCount RETURN phen.id AS PhenotypeID, phen.name AS PhenotypeName, EdsCount, CfCount ORDER BY CfCount DESC, EdsCount DESC",
+        "expected_answer": "The shared phenotypes should be displayed, with phenotypic features such as Osteopenia and Hearing impairment among the top results shared by both disease groups and their descendants."
+    },
+    {
+        "question": "Which five genes have the highest number of associated diseases, and what are the counts for each?",
+        "search_terms": [],
+        "query": "MATCH (g:`biolink:Gene`)-[r:`biolink:gene_associated_with_condition`]->(d:`biolink:Disease`) WITH g, COUNT(d) AS DiseaseCount ORDER BY DiseaseCount DESC LIMIT 5 RETURN g.id, g.name, DiseaseCount",
+        "expected_answer": "The top five genes with the highest number of associated diseases are LMNA (HGNC:6636) with 20 diseases, COL2A1 (HGNC:2200) with 19 diseases, HBB (HGNC:4827) with 19 diseases, TP53 (HGNC:11998) with 18 diseases, and PTEN (HGNC:9588) with 18 diseases."
+    },
+    {
+        "question": "What are the shortest paths between CARD9, LZTR1, and fungal disease due to CARD9 deficiency?",
+        "search_terms": ["CARD9", "LZTR1", "fungal disease due to CARD9 deficiency"],
+        "query": "WITH ['HGNC:16391', 'HGNC:6742', 'MONDO:0008905'] AS ids\n\n// Generate all unique pairs of IDs\nUNWIND ids AS id1\nUNWIND ids AS id2\nWITH id1, id2\nWHERE id1 < id2\n\n// Find the shortest paths for each pair\nMATCH p = shortestPath((start {id: id1})-[*]-(end {id: id2}))\nWITH id1, id2, p\nWHERE p IS NOT NULL\n\n// Extract the node IDs and names, and the relationship types\nWITH id1, id2, [node IN nodes(p) | node.id + '/' + node.name] AS nodeIds, p\n\n// Construct the path string with correct direction\nWITH id1, id2, nodeIds,\nreduce(s = '', idx IN range(0, length(p)-1) |\ns + nodeIds[idx] + CASE \nWHEN STARTNODE(relationships(p)[idx]) = nodes(p)[idx]\nTHEN ' -[' + type(relationships(p)[idx]) + ']-> ' \nELSE ' <-[' + type(relationships(p)[idx]) + ']- ' \nEND)\n+ last(nodeIds) AS pathString\n\n// Create the final table\nRETURN id1, id2, pathString",
+        "expected_answer": "The shortest paths between a specified set of identifiers, which includes a mix of genes and diseases, reveal connections such as 'CARD9 -[enables]-> protein binding <-[enables]- LZTR1' and 'CARD9 -[causes]-> predisposition to invasive fungal disease due to CARD9 deficiency'. These paths include node names, relationship types, and directions, providing insight into the complex interactions within the dataset."
+    },
+    {
+        "question": "How many genes are listed as orthologous between human and mouse?",
+        "search_terms": ["Homo sapiens", "Mus musculus"],
+        "query": "MATCH (g: `biolink:Gene`)-[r: `biolink:orthologous_to`]->(g2: `biolink:Gene`) WHERE 'NCBITaxon:9606' IN g.in_taxon AND 'NCBITaxon:10090' IN g2.in_taxon RETURN COUNT(r) AS orthologous_gene_pairs",
+        "expected_answer": "25121"
+    }
+]

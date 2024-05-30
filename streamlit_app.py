@@ -15,7 +15,7 @@ import dotenv # pip install python-dotenv
 # kani imports
 from kani.engines.openai import OpenAIEngine
 
-from agents import PhenomicsAgent
+from agents import *
 
 ########################
 ##### 1 - Configuration
@@ -49,8 +49,8 @@ engine35 = OpenAIEngine(os.environ["OPENAI_API_KEY"], model="gpt-3.5-turbo-0125"
 # Agents are keyed by their name, which is what the user will see in the UI
 def get_agents():
     return {
-            "Phenomics Assistant (4o)": PhenomicsAgent(engine, prompt_tokens_cost = 0.01, completion_tokens_cost = 0.03),
-            "Phenomics Assistant (3.5)": PhenomicsAgent(engine35, prompt_tokens_cost = 0.0005, completion_tokens_cost = 0.0015),
+            "Phenomics Assistant (4o)": PhenomicsAgent(engine), #, prompt_tokens_cost = 0.005, completion_tokens_cost = 0.015),
+            "Phenomics Explorer (Experimental, 4o)": MonarchKGAgent(engine), #, prompt_tokens_cost = 0.005, completion_tokens_cost = 0.015)
            }
 
 
