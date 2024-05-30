@@ -209,7 +209,7 @@ Instructions:
 
         self.greeting = """I'm the Phenomics Explorer, an experimental AI with knowledge of the Monarch Initiative's knowledge graph structure and contents. I can answer questions via complex graph queries. Some things you can ask:
 
-- What genes influence more than one phenotype of any subtype of EDS?
+- What phenotypes are associated with more than one subtype of EDS?
 - What is the shortest path between Abnormal dermatoglyphics and the GSTM3 gene?
 - Which gene is directly or indirectly associated with the largest number of diseases? (I struggle with this one!)
 
