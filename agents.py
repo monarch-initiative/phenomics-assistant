@@ -1,7 +1,6 @@
-from kani_utils.kanis import StreamlitKani
+from kani_utils.base_kanis import StreamlitKani
 from kani import AIParam, ai_function, ChatMessage
 from typing import Annotated, List
-import textwrap
 import logging
 import requests
 import streamlit as st
