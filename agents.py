@@ -39,7 +39,7 @@ Please note that I am a research preview, and this information should not be use
         self.description = "Queries the Monarch Initiative knowledge graph." # "An AI-driven copy editor."
         self.avatar = "🧬"
         self.user_avatar = "👤"
-        self.name = ""
+        self.name = "Phenomics Assistant"
 
         self.api_base = "https://oai-monarch-plugin.monarchinitiative.org"
 
@@ -223,7 +223,7 @@ Instructions:
         self.description = "Queries the Monarch KG with graph queries and contextual information."
         self.avatar = "🕷️"
         self.user_avatar = "👤"
-        self.name = ""
+        self.name = "Phenomics Explorer (Experimental)"
 
 
     @ai_function()
