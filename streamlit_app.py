@@ -20,7 +20,7 @@ def initialize_session_state():
     st.session_state.setdefault("ui_disabled", False)
     st.session_state.setdefault("lock_widgets", False)
 
-    greeting = """I'm the Phenomics Assistant, an AI chatbot with access to the [Monarch Inititive](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
+    greeting = """I'm the Phenomics Assistant, an AI chatbot with access to the [Monarch Initiative](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
     
 - What is the genetic basis of Cystic Fibrosis?
 - What symptoms are associated with Fanconi Anemia?
