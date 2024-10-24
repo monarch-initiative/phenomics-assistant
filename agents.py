@@ -28,7 +28,7 @@ IMPORTANT: Include markdown-formatted links to the Monarch Initiative for all re
         
         super().__init__(*args, **kwargs)
 
-        self.greeting = """I'm the Phenomics Assistant, an AI chatbot with access to the [Monarch Inititive](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
+        self.greeting = """I'm the Phenomics Assistant, an AI chatbot with access to the [Monarch Initiative](https://monarchinitiative.org) biomedical knowledgebase. I can search for information on diseases, genes, and phenotypes. Here are some things you might try asking:
     
 - What is the genetic basis of Cystic Fibrosis?
 - What symptoms are associated with Fanconi Anemia?
