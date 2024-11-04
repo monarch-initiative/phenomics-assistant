@@ -4,6 +4,8 @@ The [Monarch Initiative](https://monarchinitiative.org/) has an extensive, cross
 
 A demo version is available at https://phenomics-assistant.streamlit.app/
 
+An experimental demo version supporting streaming and more sophisticated graph queries is available at https://phenomics-assistant2.streamlit.app/
+
 ## Related repositories
 
 This repository contains the Streamlit-based UI framework for Phenomics Assistant, interfacing with [LLM-focused endpoints](https://github.com/monarch-initiative/oai-monarch-plugin) to the main [Monarch API](https://api-v3.monarchinitiative.org/v3/docs) via an [agent-based framework](https://github.com/monarch-initiative/agent-smith-ai). 
