@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "monarch-agent"
+name = "phenomics-assistant"
 version = "0.1.2"
 description = "LLM retrieval augmented generation agent for Monarch."
 authors = ["Shawn O'Neil <oneilsh@gmail.com>"]
