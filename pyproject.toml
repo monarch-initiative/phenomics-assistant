@@ -5,6 +5,7 @@ description = "LLM retrieval augmented generation agent for Monarch."
 authors = ["Shawn O'Neil <oneilsh@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python=">=3.10,<4.0"
