@@ -36,7 +36,7 @@ class Neo4jAgent(StreamlitKani):
         self.max_response_tokens = max_response_tokens
 
 
-
+    @st.cache_data(ttl=1)
     @ai_function()
     def query_kg(self, query: Annotated[str, AIParam(desc="Cypher query to run.")],):
         """Run a cypher query against the database."""
