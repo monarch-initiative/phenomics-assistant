@@ -49,8 +49,7 @@ engine35 = OpenAIEngine(os.environ["OPENAI_API_KEY"], model="gpt-3.5-turbo-0125"
 # Agents are keyed by their name, which is what the user will see in the UI
 def get_agents():
     return {
-            "Phenomics Assistant (4o)": PhenomicsAgent(engine), #, prompt_tokens_cost = 0.005, completion_tokens_cost = 0.015),
-            "Phenomics Explorer (Experimental, 4o)": MonarchKGAgent(engine), #, prompt_tokens_cost = 0.005, completion_tokens_cost = 0.015)
+            "Phenomics Explorer (Experimental, 4o)": MonarchKGAgent(engine, prompt_tokens_cost = 0.0025, completion_tokens_cost = 0.01)
            }
 
 
